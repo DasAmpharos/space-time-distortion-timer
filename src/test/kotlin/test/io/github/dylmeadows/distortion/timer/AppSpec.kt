@@ -1,4 +1,4 @@
-package test.io.github.dylmeadows.distortion-timer
+package test.io.github.dylmeadows.distortion.timer
 
 import io.kvision.test.SimpleSpec
 import kotlin.test.Test

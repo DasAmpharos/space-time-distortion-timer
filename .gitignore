@@ -1,4 +1,5 @@
-.*/
+.gradle
+
 build/
 out/
 /refresh.sh
@@ -6,7 +7,3 @@ out/
 *.ipr
 *.iws
 *.idea
-.gradle
-.idea
-build
-.kotlin-js-store
