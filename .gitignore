@@ -1,0 +1,12 @@
+.*/
+build/
+out/
+/refresh.sh
+*.imp
+*.ipr
+*.iws
+*.idea
+.gradle
+.idea
+build
+.kotlin-js-store
