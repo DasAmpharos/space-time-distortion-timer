@@ -15,8 +15,10 @@ import io.kvision.module
 import io.kvision.panel.hPanel
 import io.kvision.panel.root
 import io.kvision.panel.vPanel
+import io.kvision.require
 import io.kvision.startApplication
 import io.kvision.state.bind
+import org.w3c.dom.Audio
 import kotlin.math.roundToInt
 import kotlin.time.Duration
 import kotlin.time.DurationUnit

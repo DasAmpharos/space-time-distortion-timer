@@ -1,6 +1,7 @@
 package io.github.dylmeadows.distortion.timer
 
 import kotlinx.browser.window
+import org.w3c.dom.Audio
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 import kotlin.time.TimeMark
@@ -15,6 +16,7 @@ class Timer(
     private lateinit var lastMark: TimeMark
     private var timerHandle = -1
 
+    private val audio = Audio("audio/LevelUp.mp3")
     private val now: TimeMark get() = TimeSource.Monotonic.markNow()
 
     fun start() = with(state) {
@@ -26,7 +28,11 @@ class Timer(
             if (!paused) {
                 elapsed = mElapsed + delta
                 if (remaining <= Duration.ZERO) {
+                    audio.play()
                     stageIdx += 1
+                    if (stageIdx >= stages.size) {
+                        stop(); reset();
+                    }
                 }
             }
         })
