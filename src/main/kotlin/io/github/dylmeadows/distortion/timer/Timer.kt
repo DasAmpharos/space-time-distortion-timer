@@ -60,6 +60,7 @@ class Timer(
 
     fun resume() {
         state.paused = false
+        mTotalElapsed += lastMark.elapsedNow()
         lastMark = now
     }
 }
