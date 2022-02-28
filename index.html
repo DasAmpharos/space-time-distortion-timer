@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <script src="main.js" defer></script>
-    </head>
-    <body>
+<html lang="en">
+
+<head>
+    <title>Space-Time Distortion Timer</title>
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
         <div>
             <label>Remaining: </label>
-            <label id="remainingLbl"/>
+            <label id="remainingLbl" />
         </div>
         <div>
             <label>Total Elapsed: </label>
-            <label id="totalElapsedLbl"/>
+            <label id="totalElapsedLbl" />
         </div>
-        <button id="timerBtn">Start</button>
-        <button id="pauseBtn" disabled>Pause</button>
-        <button id="resetBtn">Reset</button>
-    </body>
+        <div>
+            <button id="timerBtn" class="button-primary">Start</button>
+            <button id="pauseBtn" disabled>Pause</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </div>
+</body>
+
 </html>
