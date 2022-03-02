@@ -1,0 +1,19 @@
+.container {
+    margin-top: 1em;
+}
+
+.card-header > :only-child {
+    margin-bottom: 0;
+}
+
+form > .form-group:not(:last-child) {
+    padding-bottom: 1em;
+}
+
+.form-group > button:not(:last-child) {
+    margin-right: 1em;
+}
+
+.form-group > button {
+    width: 100%;
+}

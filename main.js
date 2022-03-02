@@ -7,13 +7,13 @@ let elapsed = 0;
 let totalElapsed = 0;
 let stageIdx = 0;
 
-let timerBtn = document.getElementById("timerBtn");
-let pauseBtn = document.getElementById("pauseBtn");
-let resetBtn = document.getElementById("resetBtn");
-let remainingLbl = document.getElementById("remainingLbl");
-let totalElapsedLbl = document.getElementById("totalElapsedLbl");
-
+const timerBtn = document.getElementById("timerBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
+const remainingLbl = document.getElementById("remainingLbl");
+const totalElapsedLbl = document.getElementById("totalElapsedLbl");
 const stages = Object.freeze([5, 10, 15, 25, 40].map(it => it * 60000));
+const audio = new Audio("LevelUp.mp3");
 
 class TimeMark {
     #mark = new Date();
@@ -39,11 +39,12 @@ function start() {
     lastMark = new TimeMark();
     timerHandle = window.setInterval(() => {
         let delta = lastMark.elapsedNow();
-        totalElapsedLbl.innerHTML = formatTime(totalElapsed + delta);
+        totalElapsedLbl.value = formatTime(totalElapsed + delta);
         if (!paused) {
             let remaining = stages[stageIdx] - (elapsed + delta);
-            remainingLbl.innerHTML = formatTime(remaining);
+            remainingLbl.value = formatTime(remaining);
             if (remaining <= 0) {
+                audio.play();
                 stageIdx++;
                 if (stageIdx >= stages.length) {
                     stop(); reset();
@@ -52,7 +53,7 @@ function start() {
         }
     }, 1000);
 
-    timerBtn.innerHTML = "Stop"
+    timerBtn.textContent = "Stop"
     pauseBtn.disabled = false;
 }
 
@@ -63,7 +64,7 @@ function stop() {
     totalElapsed += delta;
     elapsed += delta;
 
-    timerBtn.innerHTML = "Start";
+    timerBtn.textContent = "Start";
     pauseBtn.disabled = true;
 }
 
@@ -73,15 +74,15 @@ function reset() {
     totalElapsed = 0;
     elapsed = 0;
 
-    totalElapsedLbl.innerHTML = formatTime(0);
-    remainingLbl.innerHTML = formatTime(stages[stageIdx]);
+    totalElapsedLbl.value = formatTime(0);
+    remainingLbl.value = formatTime(stages[stageIdx]);
 }
 
 function pause() {
     paused = true;
     elapsed += lastMark.elapsedNow();
 
-    pauseBtn.innerHTML = "Resume";
+    pauseBtn.textContent = "Resume";
 }
 
 function resume() {
@@ -89,7 +90,7 @@ function resume() {
     totalElapsed += lastMark.elapsedNow();
     lastMark = new TimeMark();
 
-    pauseBtn.innerHTML = "Pause";
+    pauseBtn.textContent = "Pause";
 }
 
 function formatTime(milliseconds) {
